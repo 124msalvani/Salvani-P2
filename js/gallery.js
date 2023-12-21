@@ -37,13 +37,14 @@ function swapPhoto() {
 		//Add code here to access the #slideShow element.
 		var swap = document.getElementById("slideShow");
 		//Access the img element and replace its source
-		swap.src = "img/places/australia.jpg";
+		swap.src = photo;
 		//with a new image from your images array which is loaded 
 		//from the JSON string
 		console.log('swap photo');
 		mCurrentIndex++;
 	} else{
 		mCurrentIndex = 0;
+		console.log("end");
 	}
 	
 	
@@ -95,12 +96,16 @@ function GalleryImage() {
 	//implement me as an object to hold the following data about an image:
 	//1. location where photo was taken
 	let location = mJson[0].imgLocation;
+	console.log(location);
 	//2. description of photo
 	let photo = mJson[0].description;
+	console.log(description);
 	//3. the date when the photo was taken
 	let date = mJson[0].date;
+	console.log(date);
 	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
 	let img = mJson[0].imgPath;
+	console.log(imgPath);
 };
 
 
