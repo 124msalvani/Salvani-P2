@@ -15,6 +15,56 @@
 
 animate();
 
+
+//Img.moreIndicator click handler
+$(document).ready(function(){
+	$(".moreIndicator").click(function(){
+		if ($(".moreIndicator").hasClass("rot90")){
+			$(".moreIndicator").removeClass("rot90")
+			$(".moreIndicator").addClass("rot270")
+			$("div.details").fadeToggle("fast", "linear")
+		} else {
+			$(".moreIndicator").removeClass("rot270")
+			$(".moreIndicator").addClass("rot90")
+			$("div.details").fadeToggle("fast", "linear")
+		}
+		
+	});
+
+	///Offset #nextPhoto
+	$("#nextPhoto").addClass("rightSide");
+
+
+
+	//Hover Handles to nextPhoto and prevPhoto
+	$("#nextPhoto").hover(function(){
+		$(this).css('opacity', '0.8');
+		}, function(){
+		$(this).css('opacity', '1');
+	  });
+	  $("#prevPhoto").hover(function(){
+		$(this).css('opacity', '0.8');
+		}, function(){
+		$(this).css('opacity', '1');
+	  });
+
+
+	  //Click Handlers
+	  $("#nextPhoto").click(function(){
+		mCurrentIndex++;
+		swapPhoto()
+		}, function(){
+		$(this).css('opacity', '1');
+	  });
+	  $("#prevPhoto").hover(function(){
+		$(this).css('opacity', '0.8');
+		}, function(){
+		$(this).css('opacity', '1');
+	  });
+});
+ 
+
+
 var mLastFrameTime = 0;
 var mWaitTime = 5000; //time in ms
 function animate() {
@@ -39,6 +89,7 @@ function swapPhoto() {
 	document.getElementsByClassName("location")[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
 	document.getElementsByClassName("description")[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
 	document.getElementsByClassName("date")[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
+	
 	mCurrentIndex++;
 
 	if (mCurrentIndex >=mJson.images.length){
