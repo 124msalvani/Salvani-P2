@@ -49,19 +49,38 @@ $(document).ready(function(){
 	  });
 
 
-	  //Click Handlers
-	  $("#nextPhoto").click(function(){
-		mCurrentIndex++;
+
+	//   TRY THESE INSTEAD... very similar to yours //
+	
+	//Click Handlers
+	/*  
+	$("#nextPhoto").click(function(){
 		swapPhoto()
-		}, function(){
-		$(this).css('opacity', '1');
-	  });
-	  $("#prevPhoto").hover(function(){
-		$(this).css('opacity', '0.8');
-		}, function(){
-		$(this).css('opacity', '1');
-	  });
-});
+		if (mCurrentIndex >=mJson.images.length){
+			mCurrentIndex = 0;
+			swapPhoto()
+			return;
+		}
+		});
+
+		$("#prevPhoto").click(function(){
+			
+			mCurrentIndex= mCurrentIndex-2;
+			if (mCurrentIndex > mJson.images.length){
+				mCurrentIndex = 0;
+				return;
+
+			} else if (mCurrentIndex < 0){
+				mCurrentIndex = 13;
+				console.log(mCurrentIndex);
+				return;
+				
+			}
+
+			swapPhoto();
+			
+	}); */
+}); 
  
 
 
@@ -85,12 +104,15 @@ function animate() {
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
+	console.log("Current Index: " + mCurrentIndex);
+
 	document.getElementById("photo").src = mImages[mCurrentIndex].url;
 	document.getElementsByClassName("location")[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
 	document.getElementsByClassName("description")[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
 	document.getElementsByClassName("date")[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
 	
 	mCurrentIndex++;
+	mLastFrameTime = 0;
 
 	if (mCurrentIndex >=mJson.images.length){
 		mCurrentIndex = 0;

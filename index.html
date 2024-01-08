@@ -28,5 +28,25 @@
 
     </div>
   </div>
+  <script>
+    
+	//   TRY THESE INSTEAD... very similar to yours //
+	$("#nextPhoto").click(function(){
+		swapPhoto()
+	});
+
+	$("#prevPhoto").click(function(){
+		mCurrentIndex -= 2;
+    if(mCurrentIndex < 0){
+      mCurrentIndex = 12;
+      if (mCurrentIndex = 12){
+        swapPhoto();
+      }
+      console.log(mCurrentIndex);
+      return;
+    }
+	   swapPhoto()
+	});
+  </script>
 </body>
 </html>
