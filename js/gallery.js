@@ -32,7 +32,12 @@ $(document).ready(function(){
 	});
 
 	///Offset #nextPhoto
-	$("#nextPhoto").addClass("rightSide");
+	// $("#nextPhoto").addClass("rightSide");
+	$("#nextPhoto").position({
+		my: "right bottom",
+		at: "right bottom",
+		of: "#nav"
+	});
 
 
 
@@ -42,7 +47,8 @@ $(document).ready(function(){
 		}, function(){
 		$(this).css('opacity', '1');
 	  });
-	  $("#prevPhoto").hover(function(){
+	  
+	 $("#prevPhoto").hover(function(){
 		$(this).css('opacity', '0.8');
 		}, function(){
 		$(this).css('opacity', '1');
@@ -102,6 +108,14 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
+	if (mCurrentIndex >= mImages.length){
+		mCurrentIndex = 0;
+	}
+	if(mCurrentIndex <0){
+		mCurrentIndex = mImages.length -1;
+	}
+
+	
 	//Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	console.log("Current Index: " + mCurrentIndex);
@@ -111,13 +125,11 @@ function swapPhoto() {
 	document.getElementsByClassName("description")[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
 	document.getElementsByClassName("date")[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
 	
-	mCurrentIndex++;
 	mLastFrameTime = 0;
+	mCurrentIndex++;
+	
 
-	if (mCurrentIndex >=mJson.images.length){
-		mCurrentIndex = 0;
-		return;
-	}
+
 	//with a new image from your images array which is loaded 
 	
 	//from the JSON string
