@@ -18,6 +18,7 @@ animate();
 
 //Img.moreIndicator click handler
 $(document).ready(function(){
+	getAllUrlParams();
 	$(".moreIndicator").click(function(){
 		if ($(".moreIndicator").hasClass("rot90")){
 			$(".moreIndicator").removeClass("rot90")
@@ -53,6 +54,28 @@ $(document).ready(function(){
 		}, function(){
 		$(this).css('opacity', '1');
 	  });
+
+
+	  //PART 4
+
+	 
+
+	///MILESTONE 3 Get JSON url from html
+
+	function getAllUrlParams() {
+		var queryString = window.location.search;
+		if (queryString) {
+			queryString = queryString.slice(6);
+			console.log(queryString)
+			mUrl = queryString;
+		} else {
+			mUrl =  'images.json';
+		}
+	}
+
+
+	
+
 
 
 
@@ -155,7 +178,12 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
+
+
+
+/* PART 4 */
+
+
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
